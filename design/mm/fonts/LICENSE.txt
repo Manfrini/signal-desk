@@ -1,0 +1,4 @@
+Inter — © The Inter Project Authors (https://github.com/rsms/inter)
+Licenza: SIL Open Font License 1.1 (https://openfontlicense.org)
+File: InterVariable.woff2, InterVariable-Italic.woff2 (v4.x, scaricati da rsms.me/inter il 2026-07-15).
+Uso locale nel design system "Marco Manfrini" — nessun CDN.

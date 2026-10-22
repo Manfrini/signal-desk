@@ -1,0 +1,18 @@
+[project]
+name = "ai-news-intelligence-agent"
+version = "0.1.0"
+description = "Local-first agent that collects, analyzes, and publishes AI/tech news intelligence."
+requires-python = ">=3.9"
+dependencies = [
+    "feedparser>=6.0,<7",
+    "requests>=2.32,<3",
+    "beautifulsoup4>=4.12,<5",
+    "pyyaml>=6.0,<7",
+    "youtube-transcript-api>=1.2,<2.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0,<9"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

@@ -1,0 +1,130 @@
+/* ============================================================
+   Design system "Marco Manfrini" — tokens (fonte di verità CSS)
+   Mood: Data-crisp. Brand book: wiki/concepts/design-system.md
+   Tema: [data-theme="light"] (default) / [data-theme="dark"]
+   Contrasto verificato WCAG AA (testo 4.5:1, grafica 3:1).
+   ============================================================ */
+
+:root, [data-theme="light"] {
+  /* Superfici */
+  --bg: #FAF9F7;            /* carta calda */
+  --surface: #FFFFFF;
+  --surface-2: #F1EFEA;     /* rialzo leggero, righe alterne */
+  --border: #E4E1DB;
+  --border-strong: #C9C5BC;
+
+  /* Testo */
+  --ink: #1A1B1E;
+  --ink-dim: #5E6169;
+  --ink-faint: #8A8D95;     /* solo testi grandi o decorativi */
+
+  /* Brand */
+  --primary: #0F4C81;       /* blu firma — testo/azioni */
+  --primary-hover: #0C3E6A;
+  --on-primary: #FFFFFF;
+  --primary-soft: #E7EFF7;  /* sfondi tinta, chip */
+
+  /* Accento dati (caldo) */
+  --accent: #C24A0B;        /* grafica */
+  --accent-text: #B54708;   /* accento come testo */
+  --accent-soft: #FBEDE3;
+
+  /* Semantici */
+  --ok: #1E7A46;      --ok-soft: #E4F3EA;
+  --warn: #9A6700;    --warn-soft: #FAF1DC;
+  --error: #B3261E;   --error-soft: #FAE7E5;
+
+  /* Palette dati categorica (grafici, 6 serie) */
+  --data-1: #0F4C81;
+  --data-2: #C24A0B;
+  --data-3: #0E7C7B;
+  --data-4: #6B4FA3;
+  --data-5: #4E7A1E;
+  --data-6: #A63D66;
+
+  --shadow-1: 0 1px 2px rgba(26,27,30,.06), 0 1px 6px rgba(26,27,30,.05);
+  --shadow-2: 0 4px 16px rgba(26,27,30,.10);
+}
+
+[data-theme="dark"] {
+  --bg: #14161A;
+  --surface: #1C1F26;
+  --surface-2: #232732;
+  --border: #2A2E37;
+  --border-strong: #3B4150;
+
+  --ink: #E9EAEC;
+  --ink-dim: #9BA0AA;
+  --ink-faint: #6E7380;
+
+  --primary: #7FB3E3;
+  --primary-hover: #A3C8ED;
+  --on-primary: #0C2E44;
+  --primary-soft: #1D2C3D;
+
+  --accent: #F2913D;
+  --accent-text: #F0A05A;
+  --accent-soft: #33231A;
+
+  --ok: #57C583;      --ok-soft: #16281E;
+  --warn: #E3B341;    --warn-soft: #2C2413;
+  --error: #F28B82;   --error-soft: #321B19;
+
+  --data-1: #7FB3E3;
+  --data-2: #F2913D;
+  --data-3: #4BC0BF;
+  --data-4: #B39DE0;
+  --data-5: #9CC65E;
+  --data-6: #E27BA4;
+
+  --shadow-1: 0 1px 2px rgba(0,0,0,.4);
+  --shadow-2: 0 6px 20px rgba(0,0,0,.5);
+}
+
+/* Inter (variabile, OFL) — servito in locale da design/fonts/, niente CDN.
+   Percorso relativo: funziona sia via server (/design/tokens.css) sia da file. */
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/InterVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/InterVariable-Italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* Colore fisso del brand per riempimenti con testo bianco (uguale nei 2 temi) */
+  --brand-fill: #0F4C81;
+
+  /* Tipografia — Inter locale per le app; fallback system stack */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-xs: 12px;   /* etichette, meta */
+  --text-sm: 13.5px; /* secondario, tabelle dense */
+  --text-md: 15px;   /* corpo */
+  --text-lg: 17px;   /* corpo enfasi, sottotitoli */
+  --text-xl: 20px;   /* titoli sezione */
+  --text-2xl: 24px;  /* titoli pagina */
+  --text-3xl: 32px;  /* hero app */
+  --text-4xl: 44px;  /* titoli slide */
+
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --leading: 1.55;
+  --leading-tight: 1.25;
+
+  /* Spaziatura (base 4) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px;
+
+  /* Raggi */
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 14px; --radius-pill: 999px;
+}

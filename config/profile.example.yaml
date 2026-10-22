@@ -1,0 +1,41 @@
+# Profilo di esempio — copialo in config/profile.yaml (o, meglio, lascia che
+# sia `python -m src.main setup` a generarlo) e adattalo a te.
+#
+# Questo file NON viene letto dall'applicazione: serve solo da riferimento.
+# Le notizie vengono ri-pesate in base a quanto sono rilevanti per QUESTI
+# obiettivi/interessi, non in assoluto.
+
+# Obiettivo di fondo: è l'unico campo che finisce nel prompt dell'LLM.
+goal: >-
+  Restare aggiornato nel mio campo e capire quali novità AI posso davvero
+  usare nel lavoro di tutti i giorni.
+
+# Temi che ti interessano. Un match alza la rilevanza personale (+6).
+interests:
+  - product management
+  - data analysis
+  - autonomous agents
+
+# I tuoi progetti attivi. Solo `keywords` viene usato per il matching (+6).
+projects:
+  - name: Nome del progetto
+    description: >-
+      Una riga su cosa stai costruendo.
+    keywords:
+      - rss
+      - dashboard
+
+# Competenze che vuoi sviluppare (+5).
+skills_to_grow:
+  - prompt engineering
+  - data visualization
+
+# Keyword con il peso più alto (+10). In minuscolo, 1-3 parole, IN INGLESE:
+# le fonti sono in inglese anche quando l'interfaccia è in italiano.
+# Evita termini generici come "ai" o "tech": matcherebbero qualsiasi notizia.
+keywords_boost:
+  - product analytics
+  - a/b test
+  - sql
+  - agent
+  - evaluation

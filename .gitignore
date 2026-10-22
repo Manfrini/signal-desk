@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+.env
+data/*
+!data/.gitkeep
+outputs/*
+!outputs/email/
+!outputs/dashboard/
+outputs/email/*
+outputs/dashboard/*
+!outputs/email/.gitkeep
+!outputs/dashboard/.gitkeep
+.DS_Store
+.venv/
+venv/
+.pytest_cache/
+.claude/settings.local.json
+config/profile.yaml
+
+# Build e strumenti
+*.egg-info/
+.ruff_cache/
+*.log

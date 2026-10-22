@@ -1,0 +1,17 @@
+max_items_per_source: 10
+lookback_days: 7
+read_state_path: data/read_urls.json
+trend_state_path: data/trend_state.json
+language: it
+timezone: Europe/Rome
+output_email_enabled: false
+output_dashboard_enabled: true
+# Genera gli insight (summary, why_it_matters, possible_action) con il CLI
+# Claude Code locale invece delle regole deterministiche. Richiede il binario
+# `claude` installato; analizza le notizie non in cache degli ultimi `lookback_days` giorni (max 7).
+llm_analysis_enabled: true
+# Tetto giornaliero di spesa LLM in USD (somma di data/llm_usage_log.json per
+# la data odierna). Se non impostato o <= 0, nessun limite. Superata la
+# soglia: gli insight/brief tornano al fallback deterministico, e
+# l'approfondimento (che non ha un fallback) risponde 429.
+# llm_daily_budget_usd: 2.0

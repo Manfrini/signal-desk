@@ -1,0 +1,1580 @@
+# Catalogo delle fonti (seed).
+#
+# Al primo avvio viene migrato una sola volta in data/sources.json, che da quel
+# momento è il file che l'app legge: aggiungi, modifica o attiva le fonti dalla
+# tab "Fonti" della dashboard, oppure editando direttamente quel JSON.
+#
+# Tutte le fonti qui elencate sono state verificate con:
+#     python scripts/verify_sources.py
+# (scarica + parsa + almeno un contenuto + pubblicazione recente).
+# Solo alcune sono attive di default, per un primo avvio rapido.
+
+categories:
+  - general_ai
+  - coding_ai
+  - research
+  - business_product
+  - image_generation
+  - music_generation
+
+sources:
+
+  # --- General AI — lab, annunci e stampa generalista (23) ---
+  - id: anthropic_news
+    name: Anthropic News
+    company: Anthropic
+    url: https://www.anthropic.com/news
+    allowed_domains:
+    - anthropic.com
+    type: html
+    category_hint: general_ai
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: true
+    notes: Official HTML news page; requires HTML card filtering to avoid newsroom/mailto links.
+  - id: mit_tech_review_ai
+    name: MIT Tech Review AI
+    company: MIT
+    url: https://www.technologyreview.com/topic/artificial-intelligence/feed
+    allowed_domains:
+    - technologyreview.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: true
+    notes: AI vertical of MIT Technology Review.
+  - id: openai_news
+    name: OpenAI News
+    company: OpenAI
+    url: https://openai.com/news/rss.xml
+    allowed_domains:
+    - openai.com
+    type: rss
+    category_hint: general_ai
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: true
+    notes: Verified official RSS feed; HTML page returned 403 in local collection.
+  - id: simon_willison
+    name: Simon Willison
+    company: Simon Willison
+    url: https://simonwillison.net/atom/everything/
+    allowed_domains:
+    - simonwillison.net
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: true
+    notes: Practical LLM experimentation, daily notes.
+  - id: yt_matt_wolfe
+    name: Matt Wolfe (YouTube)
+    company: Matt Wolfe
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UChpleBmo18P08aKCIgti38g
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: video
+    enabled: true
+    notes: Practical AI news and tools (verified channel).
+  - id: algorithmic_bridge
+    name: The Algorithmic Bridge
+    company: Alberto Romero
+    url: https://www.thealgorithmicbridge.com/feed
+    allowed_domains:
+    - thealgorithmicbridge.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: AI analysis for non-specialists.
+  - id: arstechnica_ai
+    name: Ars Technica AI
+    company: Ars Technica
+    url: https://arstechnica.com/ai/feed/
+    allowed_domains:
+    - arstechnica.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: Technical AI reporting.
+  - id: gary_marcus
+    name: Marcus on AI
+    company: Gary Marcus
+    url: https://garymarcus.substack.com/feed
+    allowed_domains:
+    - garymarcus.substack.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Critical perspective on AI hype.
+  - id: google_ai_blog
+    name: Google AI Blog
+    company: Google
+    url: https://blog.google/innovation-and-ai/technology/ai/rss/
+    allowed_domains:
+    - blog.google
+    type: rss
+    category_hint: general_ai
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: false
+    notes: Verified official Google AI RSS feed from the Google Blog AI section.
+  - id: google_blog
+    name: Google Blog
+    company: Google
+    url: https://blog.google/rss
+    allowed_domains:
+    - blog.google
+    type: rss
+    category_hint: general_ai
+    source_group: google_ecosystem
+    signal_type: official_news
+    enabled: false
+    notes: Google product and AI announcements.
+  - id: hacker_news_ai
+    name: Hacker News AI Signals
+    company: Hacker News
+    url: https://hn.algolia.com/api/v1/search_by_date
+    allowed_domains:
+    - github.com
+    - huggingface.co
+    - arxiv.org
+    - openai.com
+    - anthropic.com
+    - ai.google.dev
+    - news.ycombinator.com
+    type: hacker_news
+    category_hint: general_ai
+    source_group: open_source_community
+    signal_type: community_signal
+    enabled: false
+    notes: Enabled through Algolia JSON API with strict points/comments and AI keyword filters; avoids scraping
+      Hacker News HTML.
+    query: AI OR LLM OR agent OR open-source model
+    min_points: 40
+    min_comments: 10
+  - id: last_week_in_ai
+    name: Last Week in AI
+    company: LWiAI
+    url: https://lastweekin.ai/feed
+    allowed_domains:
+    - lastweekin.ai
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Weekly AI news roundup.
+  - id: latent_space
+    name: Latent Space
+    company: Latent Space
+    url: https://www.latent.space/feed
+    allowed_domains:
+    - latent.space
+    - substack.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: AI engineering newsletter/podcast (verified RSS).
+  - id: the_register_ai
+    name: The Register AI
+    company: The Register
+    url: https://www.theregister.com/software/ai_ml/headlines.atom
+    allowed_domains:
+    - theregister.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: Sceptical enterprise AI coverage.
+  - id: the_zvi
+    name: Don't Worry About the Vase
+    company: Zvi Mowshowitz
+    url: https://thezvi.wordpress.com/feed
+    allowed_domains:
+    - thezvi.wordpress.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Exhaustive weekly AI roundup.
+  - id: together_blog
+    name: Together AI Blog
+    company: Together
+    url: https://www.together.ai/blog/rss.xml
+    allowed_domains:
+    - together.ai
+    type: rss
+    category_hint: general_ai
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: false
+    notes: Open-model hosting and research.
+  - id: transformer_news
+    name: Transformer
+    company: Transformer
+    url: https://www.transformernews.ai/feed
+    allowed_domains:
+    - transformernews.ai
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: AI policy and safety reporting.
+  - id: verge_ai
+    name: The Verge AI
+    company: Vox Media
+    url: https://www.theverge.com/rss/ai-artificial-intelligence/index.xml
+    allowed_domains:
+    - theverge.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: The Verge AI vertical.
+  - id: wired_feed
+    name: WIRED
+    company: WIRED
+    url: https://www.wired.com/feed
+    allowed_domains:
+    - wired.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: Technology and AI reporting.
+  - id: youtube_rve5
+    name: Product Heroes YT
+    company: Product Heroes YT
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UC_qKAT7CXZ6JsbUsJJH6_uQ
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: Aggiunta dall'app.
+  - id: yt_datapizza
+    name: Datapizza (YouTube)
+    company: Datapizza
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCKssZEARhK7TT_5DEZmtMpw
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: AI/data Italian media (verified channel).
+  - id: yt_simone_rizzo
+    name: Simone Rizzo (YouTube)
+    company: Simone Rizzo
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCbMlkb79E12CwveGAtdFj-A
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: AI/ML divulgazione tecnica (verified channel).
+
+  # --- Coding & builder tooling (31) ---
+  - id: github_trending_ai
+    name: GitHub Trending
+    company: GitHub
+    url: https://github.com/trending
+    allowed_domains:
+    - github.com
+    type: github_trending
+    category_hint: coding_ai
+    source_group: open_source_community
+    signal_type: open_source_trend
+    enabled: true
+    notes: Trending giornaliero (tutti i linguaggi); filtrato a valle dal relevance score.
+  - id: anyscale_blog
+    name: Anyscale Blog
+    company: Anyscale
+    url: https://www.anyscale.com/rss.xml
+    allowed_domains:
+    - anyscale.com
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Ray and distributed AI workloads.
+  - id: cloudflare_blog
+    name: Cloudflare Blog
+    company: Cloudflare
+    url: https://blog.cloudflare.com/rss
+    allowed_domains:
+    - blog.cloudflare.com
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: official_news
+    enabled: false
+    notes: Edge AI inference and infrastructure.
+  - id: github_ai_repo_trends
+    name: Curated AI GitHub Repo Trends
+    company: GitHub
+    url: https://api.github.com
+    allowed_domains:
+    - github.com
+    type: github_repo_trend
+    category_hint: coding_ai
+    source_group: open_source_community
+    signal_type: open_source_trend
+    enabled: false
+    notes: Enabled conservative GitHub API monitor for curated AI builder and agentic coding repositories;
+      no broad GitHub Trending scraping.
+    repositories:
+    - langchain-ai/langchain
+    - run-llama/llama_index
+    - crewAIInc/crewAI
+    - microsoft/autogen
+    - pydantic/pydantic-ai
+    - continuedev/continue
+    - OpenInterpreter/open-interpreter
+    - cline/cline
+    - RooVetGit/Roo-Code
+    - Aider-AI/aider
+    - All-Hands-AI/OpenHands
+  - id: github_blog
+    name: GitHub Blog
+    company: GitHub
+    url: https://github.blog/feed/
+    allowed_domains:
+    - github.blog
+    type: rss
+    category_hint: coding_ai
+    source_group: agentic_coding
+    signal_type: official_news
+    enabled: false
+    notes: Verified official GitHub Blog RSS feed; broader than the Copilot-only changelog.
+  - id: github_copilot_changelog
+    name: GitHub Copilot Changelog
+    company: GitHub
+    url: https://github.blog/changelog/label/copilot/feed/
+    allowed_domains:
+    - github.blog
+    type: rss
+    category_hint: coding_ai
+    source_group: agentic_coding
+    signal_type: official_news
+    enabled: false
+    notes: Verified official RSS feed for the Copilot changelog label.
+  - id: langchain_blog
+    name: LangChain Blog
+    company: LangChain
+    url: https://blog.langchain.com/rss.xml
+    allowed_domains:
+    - langchain.dev
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Agent framework releases.
+  - id: neon_blog
+    name: Neon Blog
+    company: Neon
+    url: https://neon.tech/blog/rss.xml
+    allowed_domains:
+    - neon.tech
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Serverless Postgres for AI apps.
+  - id: ollama_blog
+    name: Ollama Blog
+    company: Ollama
+    url: https://ollama.com/blog/rss.xml
+    allowed_domains:
+    - ollama.com
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Local model runtime.
+  - id: openrouter_news
+    name: OpenRouter
+    company: OpenRouter
+    url: https://openrouter.ai/blog/feed.xml
+    allowed_domains:
+    - openrouter.ai
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Multi-model routing updates.
+  - id: pinecone_blog
+    name: Pinecone Blog
+    company: Pinecone
+    url: https://www.pinecone.io/rss
+    allowed_domains:
+    - pinecone.io
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Vector database and RAG.
+  - id: pragmatic_engineer
+    name: The Pragmatic Engineer
+    company: Gergely Orosz
+    url: https://newsletter.pragmaticengineer.com/feed
+    allowed_domains:
+    - newsletter.pragmaticengineer.com
+    type: rss
+    category_hint: coding_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Engineering practice and industry analysis.
+  - id: qdrant_blog
+    name: Qdrant Blog
+    company: Qdrant
+    url: https://qdrant.tech/index.xml
+    allowed_domains:
+    - qdrant.tech
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Vector search engine.
+  - id: sourcegraph_blog
+    name: Sourcegraph Blog
+    company: Sourcegraph
+    url: https://sourcegraph.com/blog/rss.xml
+    allowed_domains:
+    - sourcegraph.com
+    type: rss
+    category_hint: coding_ai
+    source_group: agentic_coding
+    signal_type: tooling
+    enabled: false
+    notes: Code search and AI coding agents.
+  - id: stackoverflow_blog
+    name: Stack Overflow Blog
+    company: Stack Overflow
+    url: https://stackoverflow.blog/feed
+    allowed_domains:
+    - stackoverflow.blog
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: opinion
+    enabled: false
+    notes: Developer practice and AI tooling.
+  - id: weaviate_blog
+    name: Weaviate Blog
+    company: Weaviate
+    url: https://weaviate.io/blog/rss.xml
+    allowed_domains:
+    - weaviate.io
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Vector database and RAG patterns.
+  - id: weights_biases
+    name: Weights & Biases
+    company: W&B
+    url: https://wandb.ai/fully-connected/rss.xml
+    allowed_domains:
+    - wandb.ai
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: ML experiment tracking and practice.
+  - id: yt_fireship
+    name: Fireship (YouTube)
+    company: Fireship
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCsBjURrPoezykLs9EqgamOA
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: coding_ai
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: Fast dev/AI coding news (verified channel).
+
+  # --- Ricerca e analisi tecnica (29) ---
+  - id: arxiv_cs_cl
+    name: arXiv cs.CL
+    company: arXiv
+    url: http://export.arxiv.org/rss/cs.CL
+    allowed_domains:
+    - arxiv.org
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: official_news
+    enabled: true
+    notes: arXiv Computation and Language (NLP/LLM).
+  - id: google_deepmind_blog
+    name: Google DeepMind Blog
+    company: Google DeepMind
+    url: https://deepmind.google/blog/rss.xml
+    allowed_domains:
+    - deepmind.google
+    - blog.google
+    type: rss
+    category_hint: research
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: true
+    notes: Verified official RSS feed; more reliable than generic HTML extraction.
+  - id: huggingface_blog
+    name: Hugging Face Blog
+    company: Hugging Face
+    url: https://huggingface.co/blog/feed.xml
+    allowed_domains:
+    - huggingface.co
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: official_news
+    enabled: true
+    notes: Verified official Hugging Face Blog RSS feed.
+  - id: import_ai
+    name: Import AI
+    company: Jack Clark
+    url: https://importai.substack.com/feed
+    allowed_domains:
+    - importai.substack.com
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: true
+    notes: Weekly AI research and policy digest.
+  - id: ahead_of_ai
+    name: Ahead of AI
+    company: Sebastian Raschka
+    url: https://magazine.sebastianraschka.com/feed
+    allowed_domains:
+    - magazine.sebastianraschka.com
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: LLM research explained in depth.
+  - id: airbnb_engineering
+    name: Airbnb Engineering
+    company: Airbnb
+    url: https://medium.com/feed/airbnb-engineering
+    allowed_domains:
+    - medium.com
+    type: rss
+    category_hint: research
+    source_group: product_data
+    signal_type: official_news
+    enabled: false
+    notes: Data / experimentation engineering (Medium publication).
+  - id: allen_ai_blog
+    name: Allen Institute for AI
+    company: AI2
+    url: https://allenai.org/rss.xml
+    allowed_domains:
+    - allenai.org
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: official_news
+    enabled: false
+    notes: AI2 open models and research.
+  - id: arxiv_cs_ai
+    name: arXiv cs.AI
+    company: arXiv
+    url: http://export.arxiv.org/rss/cs.AI
+    allowed_domains:
+    - arxiv.org
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: official_news
+    enabled: false
+    notes: arXiv Artificial Intelligence, daily.
+  - id: arxiv_cs_lg
+    name: arXiv cs.LG
+    company: arXiv
+    url: http://export.arxiv.org/rss/cs.LG
+    allowed_domains:
+    - arxiv.org
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: official_news
+    enabled: false
+    notes: arXiv Machine Learning.
+  - id: benn_stancil
+    name: Benn Stancil
+    company: Benn Stancil
+    url: https://benn.substack.com/feed
+    allowed_domains:
+    - benn.substack.com
+    - substack.com
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Sharp analytics/data commentary (verified RSS).
+  - id: dbt_blog
+    name: dbt Blog
+    company: dbt Labs
+    url: https://www.getdbt.com/blog/rss.xml
+    allowed_domains:
+    - getdbt.com
+    type: rss
+    category_hint: research
+    source_group: product_data
+    signal_type: official_news
+    enabled: false
+    notes: Analytics engineering blog; RSS URL to verify.
+  - id: distill_pub
+    name: Machine Learning Mastery
+    company: MLM
+    url: https://machinelearningmastery.com/feed/
+    allowed_domains:
+    - machinelearningmastery.com
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: official_news
+    enabled: false
+    notes: Applied ML tutorials.
+  - id: eugene_yan
+    name: Eugene Yan
+    company: Eugene Yan
+    url: https://eugeneyan.com/rss
+    allowed_domains:
+    - eugeneyan.com
+    type: rss
+    category_hint: research
+    source_group: product_data
+    signal_type: opinion
+    enabled: false
+    notes: Applied ML and recsys writing.
+  - id: google_research_blog
+    name: Google Research Blog
+    company: Google
+    url: https://research.google/blog/rss/
+    allowed_domains:
+    - research.google
+    type: rss
+    category_hint: research
+    source_group: google_ecosystem
+    signal_type: official_news
+    enabled: false
+    notes: Google Research publications and posts.
+  - id: interconnects
+    name: Interconnects
+    company: Nathan Lambert
+    url: https://www.interconnects.ai/feed
+    allowed_domains:
+    - interconnects.ai
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: RLHF and open-model analysis.
+  - id: lilian_weng
+    name: Lil'Log
+    company: Lilian Weng
+    url: https://lilianweng.github.io/index.xml
+    allowed_domains:
+    - lilianweng.github.io
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: opinion
+    enabled: false
+    notes: Deep technical LLM explainers.
+  - id: marktechpost
+    name: MarkTechPost
+    company: MarkTechPost
+    url: https://www.marktechpost.com/feed
+    allowed_domains:
+    - marktechpost.com
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: AI research news digest.
+  - id: microsoft_research
+    name: Microsoft Research Blog
+    company: Microsoft
+    url: https://www.microsoft.com/en-us/research/feed/
+    allowed_domains:
+    - microsoft.com
+    type: rss
+    category_hint: research
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: false
+    notes: MSR blog.
+  - id: netflix_tech_blog
+    name: Netflix Tech Blog
+    company: Netflix
+    url: https://netflixtechblog.com/feed
+    allowed_domains:
+    - netflixtechblog.com
+    - medium.com
+    type: rss
+    category_hint: research
+    source_group: product_data
+    signal_type: official_news
+    enabled: false
+    notes: Experimentation / data engineering at scale (Medium).
+  - id: sakana_ai
+    name: Sakana AI
+    company: Sakana AI
+    url: https://sakana.ai/feed
+    allowed_domains:
+    - sakana.ai
+    type: rss
+    category_hint: research
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: false
+    notes: Nature-inspired model research.
+  - id: towards_data_science
+    name: Towards Data Science
+    company: Towards Data Science
+    url: https://towardsdatascience.com/feed
+    allowed_domains:
+    - towardsdatascience.com
+    - medium.com
+    type: rss
+    category_hint: research
+    source_group: product_data
+    signal_type: official_news
+    enabled: false
+    notes: Data science / analytics articles (Medium publication).
+  - id: yt_3blue1brown
+    name: 3Blue1Brown (YouTube)
+    company: 3Blue1Brown
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: Math and neural network fundamentals.
+  - id: yt_ai_explained
+    name: AI Explained (YouTube)
+    company: AI Explained
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCNJ1Ymd5yFuUPtn21xtRbbw
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: Sober, critical AI analysis (verified channel).
+  - id: yt_bycloud
+    name: bycloud (YouTube)
+    company: bycloud
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCgfe2ooZD3VJPB6aJAnuQng
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: AI research explainers.
+  - id: yt_two_minute_papers
+    name: Two Minute Papers (YouTube)
+    company: Two Minute Papers
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCbfYPyITQ-7l4upoX8nvctg
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: AI research papers made accessible (verified channel).
+
+  # --- Business, product e data (18) ---
+  - id: lennys_newsletter
+    name: Lenny's Newsletter
+    company: Lenny's Newsletter
+    url: https://www.lennysnewsletter.com/feed
+    allowed_domains:
+    - lennysnewsletter.com
+    type: rss
+    category_hint: business_product
+    source_group: product_data
+    signal_type: opinion
+    enabled: true
+    notes: Product management newsletter (Substack RSS). Opinion/editorial — shows in the Opinioni e video
+      tab.
+  - id: techcrunch_ai
+    name: TechCrunch AI
+    company: TechCrunch
+    url: https://techcrunch.com/category/artificial-intelligence/feed/
+    allowed_domains:
+    - techcrunch.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: true
+    notes: AI startup and funding news.
+  - id: ai4business
+    name: AI4Business
+    company: AI4Business
+    url: https://www.ai4business.it/feed
+    allowed_domains:
+    - ai4business.it
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: Italian AI business coverage.
+  - id: databricks_blog
+    name: Databricks Blog
+    company: Databricks
+    url: https://www.databricks.com/feed
+    allowed_domains:
+    - databricks.com
+    type: rss
+    category_hint: business_product
+    source_group: product_data
+    signal_type: official_news
+    enabled: false
+    notes: Data and AI platform.
+  - id: duckdb_news
+    name: DuckDB News
+    company: DuckDB
+    url: https://duckdb.org/feed.xml
+    allowed_domains:
+    - duckdb.org
+    type: rss
+    category_hint: business_product
+    source_group: product_data
+    signal_type: tooling
+    enabled: false
+    notes: Embedded analytics database.
+  - id: motherduck_blog
+    name: MotherDuck Blog
+    company: MotherDuck
+    url: https://motherduck.com/rss.xml
+    allowed_domains:
+    - motherduck.com
+    type: rss
+    category_hint: business_product
+    source_group: product_data
+    signal_type: tooling
+    enabled: false
+    notes: Analytics engineering and DuckDB.
+  - id: oneusefulthing
+    name: One Useful Thing
+    company: Ethan Mollick
+    url: https://www.oneusefulthing.org/feed
+    allowed_domains:
+    - oneusefulthing.org
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Applied AI for work and organisations.
+  - id: platformer
+    name: Platformer
+    company: Platformer
+    url: https://www.platformer.news/feed
+    allowed_domains:
+    - platformer.news
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Big-tech and AI policy reporting.
+  - id: posthog_blog
+    name: PostHog Blog
+    company: PostHog
+    url: https://posthog.com/rss.xml
+    allowed_domains:
+    - posthog.com
+    type: rss
+    category_hint: business_product
+    source_group: product_data
+    signal_type: official_news
+    enabled: false
+    notes: Product analytics blog.
+  - id: raffaele_gaito
+    name: Raffaele Gaito (YouTube)
+    company: Raffaele Gaito
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCrebGs3b-Z7JLKQM2YOpUKA
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: Growth hacking, anti-hype (verified channel). Blog feed (raffaelegaito.com/feed/) returns 403,
+      replaced with the YouTube channel.
+  - id: seattle_data_guy
+    name: Seattle Data Guy
+    company: SDG
+    url: https://seattledataguy.substack.com/feed
+    allowed_domains:
+    - seattledataguy.substack.com
+    type: rss
+    category_hint: business_product
+    source_group: product_data
+    signal_type: opinion
+    enabled: false
+    notes: Data engineering practice.
+  - id: yt_belli_contarini
+    name: Riccardo Belli Contarini (YouTube)
+    company: Riccardo Belli Contarini
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UC1e1Xt2nsUy9lqP_R7ES5yA
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: 'AI implementation for business (verified channel). Note: titles lean money/hype.'
+  - id: yt_ycombinator
+    name: Y Combinator (YouTube)
+    company: Y Combinator
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCcefcZRL2oaA_uBNeo5UOWg
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: video
+    enabled: false
+    notes: Startup/product building, Startup School (verified channel).
+
+  # --- Immagini e video generativi (3) ---
+  - id: stability_ai_news
+    name: Stability AI News & Updates
+    company: Stability AI
+    url: https://stability.ai/news-updates?format=rss
+    allowed_domains:
+    - stability.ai
+    type: rss
+    category_hint: image_generation
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: false
+    notes: Verified official RSS feed exposed by the news page alternate link.
+
+  # --- Musica e voce (4) ---
+  - id: elevenlabs_blog
+    name: ElevenLabs Blog
+    company: ElevenLabs
+    url: https://elevenlabs.io/blog
+    allowed_domains:
+    - elevenlabs.io
+    type: html
+    category_hint: music_generation
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: false
+    notes: Official HTML blog page; no verified RSS URL found, but current HTML extraction returns useful
+      article items.
+  - id: suno_blog
+    name: Suno Blog
+    company: Suno
+    url: https://suno.com/blog/
+    allowed_domains:
+    - suno.com
+    type: html
+    category_hint: music_generation
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: false
+    notes: Official HTML blog page; no verified RSS URL found locally.
+
+  # --- Fonti aggiunte 2026-10-07 (feed verificati con post recenti) ---
+  - id: youtube_7iwd
+    name: Matt Pocock YT
+    company: Matt Pocock YT
+    url: https://www.youtube.com/feeds/videos.xml?channel_id=UCswG6FSbgZjbWtdf_hMLaow
+    allowed_domains:
+    - youtube.com
+    type: rss
+    category_hint: coding_ai
+    source_group: opinion_video
+    signal_type: video
+    enabled: true
+    notes: Aggiunta dall'app.
+  - id: aws_ml_blog
+    name: AWS Machine Learning Blog
+    company: AWS
+    url: https://aws.amazon.com/blogs/machine-learning/feed/
+    allowed_domains:
+    - aws.amazon.com
+    type: rss
+    category_hint: business_product
+    source_group: builder_ecosystem
+    signal_type: official_news
+    enabled: true
+    notes: 'Official AWS ML blog: Bedrock, SageMaker, agents.'
+  - id: nvidia_blog
+    name: NVIDIA Blog
+    company: NVIDIA
+    url: https://blogs.nvidia.com/feed/
+    allowed_domains:
+    - nvidia.com
+    type: rss
+    category_hint: general_ai
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: true
+    notes: Official NVIDIA blog; hardware and AI platform news.
+  - id: nvidia_developer_blog
+    name: NVIDIA Developer Blog
+    company: NVIDIA
+    url: https://developer.nvidia.com/blog/feed
+    allowed_domains:
+    - nvidia.com
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Technical posts for developers; high volume.
+  - id: meta_engineering
+    name: Meta Engineering
+    company: Meta
+    url: https://engineering.fb.com/feed/
+    allowed_domains:
+    - fb.com
+    type: rss
+    category_hint: research
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: true
+    notes: Official Meta engineering blog; AI infrastructure and models.
+  - id: mistral_news
+    name: Mistral AI News
+    company: Mistral AI
+    url: https://mistral.ai/rss.xml
+    allowed_domains:
+    - mistral.ai
+    type: rss
+    category_hint: general_ai
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: true
+    notes: Official Mistral RSS feed.
+  - id: apple_ml_research
+    name: Apple Machine Learning Research
+    company: Apple
+    url: https://machinelearning.apple.com/rss.xml
+    allowed_domains:
+    - apple.com
+    type: rss
+    category_hint: research
+    source_group: foundation_models
+    signal_type: official_news
+    enabled: true
+    notes: Official Apple ML research feed.
+  - id: google_developers_blog
+    name: Google Developers Blog
+    company: Google
+    url: https://blog.google/technology/developers/rss/
+    allowed_domains:
+    - blog.google
+    type: rss
+    category_hint: coding_ai
+    source_group: google_ecosystem
+    signal_type: official_news
+    enabled: false
+    notes: Gemini API and developer tooling announcements.
+  - id: guardian_ai
+    name: The Guardian AI
+    company: The Guardian
+    url: https://www.theguardian.com/technology/artificialintelligenceai/rss
+    allowed_domains:
+    - theguardian.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: Mainstream AI coverage.
+  - id: the_information
+    name: The Information
+    company: The Information
+    url: https://www.theinformation.com/feed
+    allowed_domains:
+    - theinformation.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: Tech business reporting; most articles are paywalled.
+  - id: mit_tech_review
+    name: MIT Technology Review
+    company: MIT
+    url: https://www.technologyreview.com/feed/
+    allowed_domains:
+    - technologyreview.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: General feed; the AI-only feed is mit_tech_review_ai.
+  - id: cnbc_tech
+    name: CNBC Tech
+    company: CNBC
+    url: https://www.cnbc.com/id/19854910/device/rss/rss.html
+    allowed_domains:
+    - cnbc.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: General tech/business feed; relies on the relevance filter.
+  - id: bloomberg_tech
+    name: Bloomberg Technology
+    company: Bloomberg
+    url: https://feeds.bloomberg.com/technology/news.rss
+    allowed_domains:
+    - bloomberg.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: General tech feed; relies on the relevance filter.
+  - id: zdnet_ai
+    name: ZDNet AI
+    company: ZDNet
+    url: https://www.zdnet.com/topic/artificial-intelligence/rss.xml
+    allowed_domains:
+    - zdnet.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: AI vertical of ZDNet.
+  - id: ieee_spectrum_ai
+    name: IEEE Spectrum AI
+    company: IEEE
+    url: https://spectrum.ieee.org/feeds/topic/artificial-intelligence.rss
+    allowed_domains:
+    - spectrum.ieee.org
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: Technical AI reporting.
+  - id: 404_media
+    name: 404 Media
+    company: 404 Media
+    url: https://www.404media.co/rss/
+    allowed_domains:
+    - 404media.co
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: Investigative tech reporting; general feed.
+  - id: axios_feed
+    name: Axios
+    company: Axios
+    url: https://www.axios.com/feeds/feed.rss
+    allowed_domains:
+    - axios.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: official_news
+    enabled: false
+    notes: General feed; relies on the relevance filter.
+  - id: stratechery
+    name: Stratechery
+    company: Ben Thompson
+    url: https://stratechery.com/feed/
+    allowed_domains:
+    - stratechery.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Tech strategy analysis; mostly paywalled.
+  - id: benedict_evans
+    name: Benedict Evans
+    company: Benedict Evans
+    url: https://www.ben-evans.com/benedictevans?format=rss
+    allowed_domains:
+    - ben-evans.com
+    type: rss
+    category_hint: business_product
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Tech and AI strategy essays; posts irregularly.
+  - id: nature_ml
+    name: Nature Machine Learning
+    company: Nature
+    url: https://www.nature.com/subjects/machine-learning.rss
+    allowed_domains:
+    - nature.com
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: official_news
+    enabled: false
+    notes: Peer-reviewed ML papers.
+  - id: mit_news_ai
+    name: MIT News AI
+    company: MIT
+    url: https://news.mit.edu/topic/mitartificial-intelligence2-rss.xml
+    allowed_domains:
+    - mit.edu
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: official_news
+    enabled: false
+    notes: MIT research news on AI.
+  - id: bair_blog
+    name: BAIR Blog
+    company: UC Berkeley
+    url: https://bair.berkeley.edu/blog/feed.xml
+    allowed_domains:
+    - berkeley.edu
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: official_news
+    enabled: false
+    notes: Berkeley AI Research; infrequent posts.
+  - id: understanding_ai
+    name: Understanding AI
+    company: Timothy B. Lee
+    url: https://www.understandingai.org/feed
+    allowed_domains:
+    - understandingai.org
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: AI explained for non-specialists.
+  - id: ai_snake_oil
+    name: AI Snake Oil
+    company: Narayanan & Kapoor
+    url: https://www.aisnakeoil.com/feed
+    allowed_domains:
+    - aisnakeoil.com
+    - normaltech.ai
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: Critical look at AI claims.
+  - id: epoch_ai
+    name: Epoch AI
+    company: Epoch AI
+    url: https://epochai.substack.com/feed
+    allowed_domains:
+    - epochai.substack.com
+    - epoch.ai
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: true
+    notes: Data on AI trends, compute and benchmarks.
+  - id: lesswrong
+    name: LessWrong
+    company: LessWrong
+    url: https://www.lesswrong.com/feed.xml
+    allowed_domains:
+    - lesswrong.com
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: opinion
+    enabled: false
+    notes: Community posts on AI safety and alignment.
+  - id: alignment_forum
+    name: Alignment Forum
+    company: Alignment Forum
+    url: https://www.alignmentforum.org/feed.xml
+    allowed_domains:
+    - alignmentforum.org
+    type: rss
+    category_hint: research
+    source_group: open_source_community
+    signal_type: opinion
+    enabled: false
+    notes: AI alignment research discussion.
+  - id: bens_bites
+    name: Ben's Bites
+    company: Ben Tossell
+    url: https://www.bensbites.com/feed
+    allowed_domains:
+    - bensbites.com
+    type: rss
+    category_hint: general_ai
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: true
+    notes: Daily AI newsletter.
+  - id: the_sequence
+    name: The Sequence
+    company: TheSequence
+    url: https://thesequence.substack.com/feed
+    allowed_domains:
+    - thesequence.substack.com
+    type: rss
+    category_hint: research
+    source_group: opinion_video
+    signal_type: opinion
+    enabled: false
+    notes: AI research and engineering newsletter.
+  - id: product_hunt
+    name: Product Hunt
+    company: Product Hunt
+    url: https://www.producthunt.com/feed
+    allowed_domains:
+    - producthunt.com
+    type: rss
+    category_hint: business_product
+    source_group: open_source_community
+    signal_type: community_signal
+    enabled: false
+    notes: All launches, not only AI; relies on the relevance filter.
+  - id: hn_ai_100
+    name: Hacker News AI (100+ points)
+    company: Hacker News
+    url: https://hnrss.org/newest?q=AI+OR+LLM&points=100
+    allowed_domains:
+    - github.com
+    - huggingface.co
+    - arxiv.org
+    - openai.com
+    - anthropic.com
+    - ai.google.dev
+    - news.ycombinator.com
+    - youtube.com
+    type: rss
+    category_hint: general_ai
+    source_group: open_source_community
+    signal_type: community_signal
+    enabled: false
+    notes: hnrss query for AI/LLM posts with at least 100 points.
+  - id: lobsters_ai
+    name: Lobsters AI
+    company: Lobsters
+    url: https://lobste.rs/t/ai.rss
+    allowed_domains:
+    - github.com
+    - huggingface.co
+    - arxiv.org
+    - openai.com
+    - anthropic.com
+    - ai.google.dev
+    - lobste.rs
+    type: rss
+    category_hint: general_ai
+    source_group: open_source_community
+    signal_type: community_signal
+    enabled: false
+    notes: Technical community, AI tag.
+  - id: github_changelog
+    name: GitHub Changelog
+    company: GitHub
+    url: https://github.blog/changelog/feed/
+    allowed_domains:
+    - github.blog
+    type: rss
+    category_hint: coding_ai
+    source_group: agentic_coding
+    signal_type: official_news
+    enabled: false
+    notes: Full GitHub changelog, not only Copilot.
+  - id: rel_ollama
+    name: Ollama Releases
+    company: Ollama
+    url: https://github.com/ollama/ollama/releases.atom
+    allowed_domains:
+    - github.com
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: GitHub release feed.
+  - id: rel_langchain
+    name: LangChain Releases
+    company: LangChain
+    url: https://github.com/langchain-ai/langchain/releases.atom
+    allowed_domains:
+    - github.com
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: GitHub release feed.
+  - id: rel_llama_cpp
+    name: llama.cpp Releases
+    company: ggml
+    url: https://github.com/ggml-org/llama.cpp/releases.atom
+    allowed_domains:
+    - github.com
+    type: rss
+    category_hint: coding_ai
+    source_group: open_source_community
+    signal_type: tooling
+    enabled: false
+    notes: GitHub release feed; very frequent builds.
+  - id: rel_vllm
+    name: vLLM Releases
+    company: vLLM
+    url: https://github.com/vllm-project/vllm/releases.atom
+    allowed_domains:
+    - github.com
+    type: rss
+    category_hint: coding_ai
+    source_group: open_source_community
+    signal_type: tooling
+    enabled: false
+    notes: GitHub release feed.
+  - id: rel_openai_python
+    name: OpenAI Python SDK Releases
+    company: OpenAI
+    url: https://github.com/openai/openai-python/releases.atom
+    allowed_domains:
+    - github.com
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: GitHub release feed.
+  - id: rel_claude_code
+    name: Claude Code Releases
+    company: Anthropic
+    url: https://github.com/anthropics/claude-code/releases.atom
+    allowed_domains:
+    - github.com
+    type: rss
+    category_hint: coding_ai
+    source_group: agentic_coding
+    signal_type: tooling
+    enabled: false
+    notes: GitHub release feed.
+  - id: rel_mcp_servers
+    name: MCP Servers Releases
+    company: Model Context Protocol
+    url: https://github.com/modelcontextprotocol/servers/releases.atom
+    allowed_domains:
+    - github.com
+    type: rss
+    category_hint: coding_ai
+    source_group: agentic_coding
+    signal_type: tooling
+    enabled: false
+    notes: GitHub release feed.
+  - id: vercel_blog
+    name: Vercel Changelog
+    company: Vercel
+    url: https://vercel.com/atom
+    allowed_domains:
+    - vercel.com
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Frequent platform changelog; relies on the relevance filter.
+  - id: supabase_blog
+    name: Supabase Blog
+    company: Supabase
+    url: https://supabase.com/rss.xml
+    allowed_domains:
+    - supabase.com
+    type: rss
+    category_hint: coding_ai
+    source_group: builder_ecosystem
+    signal_type: tooling
+    enabled: false
+    notes: Backend platform news; relies on the relevance filter.
+  - id: replit_blog
+    name: Replit Blog
+    company: Replit
+    url: https://blog.replit.com/feed.xml
+    allowed_domains:
+    - replit.com
+    type: rss
+    category_hint: coding_ai
+    source_group: agentic_coding
+    signal_type: official_news
+    enabled: false
+    notes: Replit agent and platform updates.
+  - id: mcp_blog
+    name: Model Context Protocol Blog
+    company: Model Context Protocol
+    url: https://blog.modelcontextprotocol.io/index.xml
+    allowed_domains:
+    - modelcontextprotocol.io
+    type: rss
+    category_hint: coding_ai
+    source_group: agentic_coding
+    signal_type: official_news
+    enabled: false
+    notes: Official MCP blog.

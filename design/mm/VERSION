@@ -1,0 +1,9 @@
+# Snapshot congelato del design system usato da questa app.
+# L'upstream è un repository privato dell'autore e NON è raggiungibile da
+# chi clona questo progetto: la copia qui dentro è autosufficiente e va
+# trattata come sorgente, non come cache da rigenerare.
+source=private (frozen snapshot)
+source_path=design/
+source_commit=3fd13fe49d4a07cc20c5bea11aaebea1c76db6ab
+copied_at=2026-09-02
+system=Data-crisp
